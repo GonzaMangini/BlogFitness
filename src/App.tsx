@@ -6,11 +6,14 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import Blog from './pages/Blog';
 import About from './pages/About';
+import PostDetail from './pages/PostDetail';
+import ScrollToTop from './components/ScrollToTop';
 
 const App: React.FC = () => {
   return (
     <Router>
       <div className="App">
+        <ScrollToTop />
         <Navbar />
         
         <AnimatePresence mode="wait">
@@ -23,6 +26,7 @@ const App: React.FC = () => {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/blog" element={<Blog />} />
+              <Route path="/blog/:id" element={<PostDetail />} />
               <Route path="/about" element={<About />} />
             </Routes>
           </motion.main>

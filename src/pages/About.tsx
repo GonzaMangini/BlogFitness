@@ -3,32 +3,87 @@ import { motion } from 'framer-motion';
 
 const About: React.FC = () => {
   const skills = [
-    { name: 'Entrenamiento de Fuerza', level: 75, icon: '🏋️' },
-    { name: 'Cardio', level: 60, icon: '🏃' },
-    { name: 'Nutrición', level: 80, icon: '🥗' },
-    { name: 'Constancia', level: 90, icon: '💪' },
-    { name: 'Motivación', level: 95, icon: '🔥' }
+    { name: 'Fuerza', level: 100, icon: '🏋️' },
+    { name: 'Motivación', level: 95, icon: '🔥' },
+    { name: 'Nutrición', level: 82, icon: '🥗' },
+    { name: 'Constancia', level: 70, icon: '🕒' },
+    { name: 'Cardio', level: 45, icon: '🏃' },
+    { name: 'Pelo', level: 10, icon: '👨‍🦲' },
   ];
 
   const timeline = [
     {
-      date: 'Enero 2025',
-      title: 'Inicio del viaje',
-      description: 'Decidí cambiar mi estilo de vida y comenzar a entrenar regularmente.',
-      icon: '🚀'
+      date: 'Abril 2010',
+      title: 'Empece jugando al futbol a mis 8 años',
+      description: 'Buscaba adaptarme a un deporte que me gustara, pero no duro mucho.',
+      icon: '⚽'
     },
     {
-      date: 'Febrero 2025',
-      title: 'Primeros resultados',
-      description: 'Comencé a ver cambios físicos y mentales significativos.',
-      icon: '📈'
+      date: 'Julio 2011',
+      title: 'Comencé a jugar al rugby a mis 9 años',
+      description: 'Mi padre hacia rugby en su juventud, y me animo a que también lo hiciera.',
+      icon: '🏉'
     },
     {
-      date: 'Presente',
-      title: 'Compartiendo mi experiencia',
-      description: 'Creé este blog para documentar y compartir mi progreso.',
-      icon: '✍️'
-    }
+      date: 'Noviembre 2014',
+      title: 'Ya mucha pasión por el Rugby y un hermoso grupo de amigos',
+      description: 'Decedido a seguir con el Rugby, y con un grupo de amigos que me animaban a que también lo hiciera.',
+      icon: '😁'
+    },
+    {
+      date: 'Marzo 2016',
+      title: 'Mi primeros pasos en el Fitness',
+      description: 'Empece en Onda Crossfit, entrenando movilidad y crossfit.',
+      icon: '🏃'
+    },
+    {
+      date: 'Mayo 2018',
+      title: 'Ganamos el primer torneo de Rugby con mi categoria',
+      description: 'Ya en la M15, terminamos el torneo del valle en el primer lugar.',
+      icon: '🏉'
+    },
+    {
+      date: 'Principio de 2019',
+      title: 'Fui elegido como capitan por mi categoria',
+      description: 'Fue un honor para mí, y me sentí responsable de mis compañeros.',
+      icon: '🏃'
+    },
+    {
+      date: 'Marzo 2020',
+      title: 'Empezo la pandemia y el fitness en casa',
+      description: 'Seguia entrenado, pero en casa.',
+      icon: '🏋️'
+    },
+    {
+      date: 'Mayo 2021',
+      title: 'De vuelta a la rutina',
+      description: 'Entrenaba en Onda Crossfit 3 veces por semana y tambien rugby 4 veces por semana.',
+      icon: '🏉'
+    },
+    {
+      date: 'Mediados de 2021',
+      title: 'Tuvimos un TestMach para el seleccionado de los pumas',
+      description: 'En el test solo quedo un compañero de nuestra categoria, pero la mayoria estabamosen el seleccionado el valle.',
+      icon: '🏉'
+    },
+    {
+      date: 'Fines de 2021',
+      title: 'Ganamos todos los tornes del valle y un hermoso cierre de categoria',
+      description: 'Con 4 copas a casa y una hermosa despedida de categoria ya no iba a volver a jugar con mis amigos',
+      icon: '🏃'
+    },
+    {
+      date: 'Febrero 2022',
+      title: 'Deje rugby pero no el Club',
+      description: 'En rugby estaba jugando y entrenando con primera pero no me sentia comodo, asi que decidi ayudar a categorias inferiores.',
+      icon: '🏃'
+    },
+    {
+      date: 'Febrero 2023',
+      title: 'Vengo a La Plata a estudiar',
+      description: 'Decidi mudarme a la Plata para estudiar programacion y no volver a jugar al Rugby. Pero nunca abandonando el gimansio',
+      icon: '🏋️'
+    },
   ];
 
   return (
@@ -44,15 +99,13 @@ const About: React.FC = () => {
               transition={{ duration: 0.8 }}
             >
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
-                Hola, soy Gonza 👋
+                Hola, si llegaste aca sabes quien soy
               </h1>
               <p className="text-xl text-blue-100 mb-6 leading-relaxed">
-                Un desarrollador apasionado que decidió embarcarse en un viaje de 
-                transformación personal a través del fitness y el entrenamiento.
+               Un apasionado por el deporte y la programación. En esta parte de mi blog vas a conocer un poco más sobre mí y mi camino hacia una vida más saludable.
               </p>
               <p className="text-lg text-blue-200 leading-relaxed">
-                Este blog es mi diario personal donde comparto mis experiencias, 
-                aprendizajes y reflexiones en este camino hacia una vida más saludable.
+                Este blog es mi diario personal donde comparto mis experiencias.
               </p>
             </motion.div>
 
@@ -67,9 +120,23 @@ const About: React.FC = () => {
                 <motion.div
                   whileHover={{ scale: 1.05 }}
                   transition={{ duration: 0.3 }}
-                  className="w-80 h-80 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full flex items-center justify-center text-8xl shadow-2xl"
+                  className="w-80 h-80 rounded-full shadow-2xl overflow-hidden bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center"
                 >
-                  🧑‍💻
+                  <img 
+                    src="/Foto1.jpg" 
+                    alt="Gonzalo Mangini"
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      e.currentTarget.style.display = 'none';
+                      const fallbackElement = e.currentTarget.nextElementSibling as HTMLElement;
+                      if (fallbackElement) {
+                        fallbackElement.style.display = 'flex';
+                      }
+                    }}
+                  />
+                  <div className="w-full h-full flex items-center justify-center text-8xl" style={{display: 'none'}}>
+                  👨‍🦲
+                  </div>
                 </motion.div>
                 <motion.div
                   initial={{ opacity: 0, scale: 0 }}
@@ -111,7 +178,7 @@ const About: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300"
+                className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-150"
               >
                 <div className="flex items-center mb-4">
                   <span className="text-3xl mr-3">{skill.icon}</span>
@@ -173,10 +240,10 @@ const About: React.FC = () => {
                 }`}
               >
                 {/* Content */}
-                <div className={`w-5/12 ${index % 2 === 0 ? 'text-right pr-8' : 'text-left pl-8'}`}>
+                <div className={`w-5/12 ${index % 2 === 0 ? 'pr-8' : 'pl-8'}`}>
                   <motion.div
                     whileHover={{ scale: 1.02 }}
-                    className="bg-gray-50 rounded-xl p-6 shadow-lg"
+                    className="bg-gray-50 rounded-xl p-6 shadow-lg text-center"
                   >
                     <div className="text-sm text-blue-600 font-semibold mb-2">
                       {item.date}
@@ -192,7 +259,11 @@ const About: React.FC = () => {
 
                 {/* Icon */}
                 <motion.div
-                  whileHover={{ scale: 1.1 }}
+                  whileHover={{ 
+                    boxShadow: "0 10px 25px -5px rgba(59, 130, 246, 0.5)",
+                    borderColor: "rgb(147, 51, 234)"
+                  }}
+                  transition={{ duration: 0.2 }}
                   className="absolute left-1/2 transform -translate-x-1/2 w-12 h-12 bg-white border-4 border-blue-500 rounded-full flex items-center justify-center text-xl shadow-lg"
                 >
                   {item.icon}
@@ -204,25 +275,46 @@ const About: React.FC = () => {
       </section>
 
       {/* Personal Message Section */}
-      <section className="py-16 bg-gradient-to-r from-gray-100 to-blue-50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-24 bg-gradient-to-br from-blue-50 via-purple-50 to-indigo-100">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="bg-white rounded-2xl p-8 md:p-12 shadow-xl text-center"
+            className="bg-white rounded-3xl p-12 md:p-16 shadow-2xl text-center relative overflow-hidden"
           >
-            <div className="text-4xl mb-6">💭</div>
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-6">
-              Mi Filosofía Personal
-            </h2>
-            <blockquote className="text-lg text-gray-600 italic leading-relaxed mb-6">
-              "Creo firmemente que el fitness no se trata solo de cambiar tu cuerpo, 
-              sino de transformar tu mente y tu relación contigo mismo. Cada día es 
-              una oportunidad para ser una mejor versión de quien fuiste ayer."
-            </blockquote>
-            <div className="w-16 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full"></div>
+            {/* Background decoration */}
+            <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-blue-500 via-purple-500 to-indigo-500"></div>
+            
+            <motion.h2 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent mb-8"
+            >
+              Mi Meta Personal
+            </motion.h2>
+            
+            <motion.blockquote 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+              className="text-xl md:text-2xl text-gray-700 leading-relaxed mb-10 max-w-4xl mx-auto"
+            >
+              Hoy mi meta es seguir construyendo una base sólida para mi futuro. 
+              Después de vivir mi primera experiencia laboral, entendí la importancia de la 
+              responsabilidad y el compromiso. Estoy enfocado en mantener buenos hábitos, 
+              ser constante en lo que me propongo y seguir creciendo tanto personal como 
+              profesionalmente.
+            </motion.blockquote>
+            
+            <motion.div 
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              className="w-32 h-1.5 bg-gradient-to-r from-blue-500 via-purple-500 to-indigo-500 mx-auto rounded-full"
+            ></motion.div>
           </motion.div>
         </div>
       </section>

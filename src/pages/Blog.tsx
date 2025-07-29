@@ -6,32 +6,76 @@ import { blogPosts } from '../data/blogPosts';
 const Blog: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
+  const [copied, setCopied] = useState(false);
 
   const filteredPosts = blogPosts.filter(post => {
     const matchesSearch = post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          post.description.toLowerCase().includes(searchTerm.toLowerCase());
-    return matchesSearch;
+    const matchesCategory = selectedCategory === 'all' || post.category === selectedCategory;
+    return matchesSearch && matchesCategory;
   });
 
   const categories = ['all', 'rutinas', 'nutrición', 'motivación', 'progreso'];
 
+  // Obtener nombre de categoría en español
+  const getCategoryLabel = (category: string) => {
+    const labels: { [key: string]: string } = {
+      'all': 'Todos',
+      'rutinas': 'Rutinas',
+      'nutrición': 'Nutrición',
+      'motivación': 'Motivación',
+      'progreso': 'Progreso'
+    };
+    return labels[category] || category;
+  };
+
   return (
     <div className="min-h-screen bg-gray-50 pt-20">
       {/* Header Section */}
-      <section className="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative bg-gradient-to-br from-blue-600 via-purple-600 to-indigo-700 text-white py-20 overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-10 left-10 w-20 h-20 border-2 border-white rounded-full"></div>
+          <div className="absolute top-32 right-20 w-16 h-16 border-2 border-white rounded-lg rotate-45"></div>
+          <div className="absolute bottom-20 left-1/4 w-12 h-12 border-2 border-white rounded-full"></div>
+          <div className="absolute bottom-32 right-1/3 w-8 h-8 bg-white rounded-full"></div>
+        </div>
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-center"
+            className="text-center mb-12"
           >
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">
+            <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white to-blue-100 bg-clip-text text-transparent">
               Mi Blog de Entrenamiento
             </h1>
-            <p className="text-xl text-blue-100 max-w-2xl mx-auto">
-              Comparto mi experiencia, aprendizajes y reflexiones en este viaje hacia una vida más saludable.
+            <p className="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto mb-8 leading-relaxed">
+              Comparto mi experiencia, aprendizajes y reflexiones para una vida más saludable. Todo desde un punto de la experiencia personal.
+              <span className="block mt-2 text-lg text-blue-200">Si de verdad queres lo mismo para vos, asesorate con profesionales.</span>
             </p>
+          </motion.div>
+
+          {/* Stats Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto"
+          >
+            <div className="text-center bg-white/10 backdrop-blur-sm rounded-xl p-4">
+              <div className="text-3xl font-bold text-white mb-1">{blogPosts.length}</div>
+              <div className="text-blue-200 text-sm font-medium">Posts Publicados</div>
+            </div>
+            <div className="text-center bg-white/10 backdrop-blur-sm rounded-xl p-4">
+              <div className="text-3xl font-bold text-white mb-1">4</div>
+              <div className="text-blue-200 text-sm font-medium">Categorías</div>
+            </div>
+            <div className="text-center bg-white/10 backdrop-blur-sm rounded-xl p-4">
+              <div className="text-3xl font-bold text-white mb-1">2+</div>
+              <div className="text-blue-200 text-sm font-medium">Meses Activo</div>
+            </div>
           </motion.div>
         </div>
       </section>
@@ -62,20 +106,20 @@ const Blog: React.FC = () => {
             </div>
 
             {/* Category Filter */}
-            <div className="flex space-x-2">
+            <div className="flex flex-wrap gap-2">
               {categories.map((category) => (
                 <motion.button
                   key={category}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => setSelectedCategory(category)}
-                  className={`px-4 py-2 rounded-lg font-medium transition-colors duration-200 capitalize ${
+                  className={`px-4 py-2 rounded-lg font-medium transition-colors duration-200 ${
                     selectedCategory === category
                       ? 'bg-blue-600 text-white'
                       : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                   }`}
                 >
-                  {category === 'all' ? 'Todos' : category}
+                  {getCategoryLabel(category)}
                 </motion.button>
               ))}
             </div>
@@ -122,6 +166,14 @@ const Blog: React.FC = () => {
                 No se encontraron posts
               </h3>
               <p className="text-gray-500">
+                {searchTerm && selectedCategory !== 'all' 
+                  ? `No hay posts que coincidan con "${searchTerm}" en la categoría ${getCategoryLabel(selectedCategory).toLowerCase()}.`
+                  : searchTerm 
+                  ? `No hay posts que coincidan con "${searchTerm}".`
+                  : `No hay posts en la categoría ${getCategoryLabel(selectedCategory).toLowerCase()}.`
+                }
+              </p>
+              <p className="text-gray-400 text-sm mt-2">
                 Intenta con otros términos de búsqueda o selecciona una categoría diferente.
               </p>
             </motion.div>
@@ -129,8 +181,8 @@ const Blog: React.FC = () => {
         </div>
       </section>
 
-      {/* Newsletter Section */}
-      <section className="py-16 bg-gray-100">
+      {/* CTA Section */}
+      <section className="py-16 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -138,21 +190,51 @@ const Blog: React.FC = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl font-bold text-gray-800 mb-4">
-              ¿Te gusta mi contenido?
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Comparti mi blog Fitness
             </h2>
-            <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
-              Sígueme en mis redes sociales para no perderte ninguna actualización 
-              y únete a esta comunidad de personas que buscan mejorar cada día.
+            <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
+              Sígueme en mis redes sociales y comparti mi blog Fitness. Si te gusto lo que viste no
+              dudes en compartirlo con tus amigos y conmigo.
             </p>
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg transition-colors duration-200">
-                Seguir mi viaje 🚀
-              </button>
-            </motion.div>
+            
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => {
+                  window.location.href = 'mailto:gonzamangini@gmail.com';
+                }}
+                className="bg-white text-blue-600 hover:bg-blue-50 font-semibold py-3 px-8 rounded-lg transition-colors duration-200 shadow-lg cursor-pointer"
+              >
+                Contactame 📩
+              </motion.button>
+              
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={async () => {
+                  try {
+                    await navigator.clipboard.writeText(window.location.origin);
+                    setCopied(true);
+                    setTimeout(() => setCopied(false), 2000);
+                  } catch (err) {
+                    // Fallback para navegadores que no soportan clipboard API
+                    const textArea = document.createElement('textarea');
+                    textArea.value = window.location.origin;
+                    document.body.appendChild(textArea);
+                    textArea.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(textArea);
+                    setCopied(true);
+                    setTimeout(() => setCopied(false), 2000);
+                  }
+                }}
+                className="bg-blue-500 hover:bg-blue-400 text-white font-semibold py-3 px-8 rounded-lg transition-colors duration-200 border-2 border-blue-400 cursor-pointer"
+              >
+                {copied ? 'Copiado! ✓' : 'Compartir ⛓️'}
+              </motion.button>
+            </div>
           </motion.div>
         </div>
       </section>

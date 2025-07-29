@@ -44,7 +44,7 @@ const Navbar: React.FC = () => {
               to="/" 
               className="text-2xl font-bold text-gray-800 hover:text-blue-600 transition-colors duration-200"
             >
-              💪 Gonza Fitness
+              GnzFit
             </Link>
           </motion.div>
 

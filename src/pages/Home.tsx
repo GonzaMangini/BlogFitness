@@ -23,7 +23,7 @@ const Home: React.FC = () => {
                 transition={{ duration: 0.8, delay: 0.3 }}
                 className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600"
               >
-                Viaje Fitness
+                Blog Fitness
               </motion.span>
             </motion.h1>
 
@@ -102,38 +102,7 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-3 gap-8"
-          >
-            {[
-              { number: "90+", label: "Días entrenando", icon: "💪" },
-              { number: "25+", label: "Entrenamientos completados", icon: "🏋️" },
-              { number: "∞", label: "Motivación y ganas", icon: "🔥" }
-            ].map((stat, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.2 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -5 }}
-                className="text-center bg-white/60 backdrop-blur-sm rounded-xl p-8 shadow-lg border border-gray-100"
-              >
-                <div className="text-4xl mb-4">{stat.icon}</div>
-                <div className="text-4xl font-bold text-gray-800 mb-2">{stat.number}</div>
-                <div className="text-gray-600 font-medium">{stat.label}</div>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
+
     </div>
   );
 };

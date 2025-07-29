@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 import { BlogPost } from '../types';
 
 interface BlogCardProps {
@@ -8,6 +9,8 @@ interface BlogCardProps {
 }
 
 const BlogCard: React.FC<BlogCardProps> = ({ post, index }) => {
+  const navigate = useNavigate();
+  
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
     return date.toLocaleDateString('es-ES', {
@@ -60,16 +63,12 @@ const BlogCard: React.FC<BlogCardProps> = ({ post, index }) => {
       className="card p-6 h-full flex flex-col"
     >
       {/* Header */}
-      <div className="flex items-center justify-between mb-4">
+      <div className="flex items-center mb-4">
         <div className="flex items-center space-x-2 text-sm text-gray-500">
           <span>📅</span>
           <time dateTime={post.date}>
             {formatDate(post.date)}
           </time>
-        </div>
-        <div className="flex items-center space-x-2 text-sm text-gray-500">
-          <span>⏱️</span>
-          <span>{post.readTime} min de lectura</span>
         </div>
       </div>
 
@@ -91,8 +90,22 @@ const BlogCard: React.FC<BlogCardProps> = ({ post, index }) => {
       {/* Footer */}
       <div className="flex items-center justify-between pt-4 border-t border-gray-100">
         <div className="flex items-center space-x-2">
-          <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
-            <span className="text-blue-600 font-semibold text-sm">
+          <div className="w-8 h-8 rounded-full overflow-hidden flex items-center justify-center bg-blue-100">
+            <img 
+              src="/Foto2.png" 
+              alt={post.author}
+              className="w-full h-full object-cover"
+              onError={(e) => {
+                const target = e.target as HTMLImageElement;
+                target.style.display = 'none';
+                const fallback = target.nextElementSibling as HTMLElement;
+                if (fallback) fallback.style.display = 'flex';
+              }}
+            />
+            <span 
+              className="text-blue-600 font-semibold text-sm w-full h-full flex items-center justify-center" 
+              style={{ display: 'none' }}
+            >
               {post.author.split(' ').map(name => name[0]).join('')}
             </span>
           </div>
@@ -104,16 +117,13 @@ const BlogCard: React.FC<BlogCardProps> = ({ post, index }) => {
         <motion.button
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
+          onClick={() => navigate(`/blog/${post.id}`)}
           className="text-blue-600 hover:text-blue-700 font-medium text-sm transition-colors duration-200"
         >
           Leer más →
         </motion.button>
       </div>
 
-      {/* Animation type indicator (for demo purposes) */}
-      <div className="absolute top-2 right-2 opacity-20 text-xs text-gray-400">
-        {post.animationType}
-      </div>
     </motion.article>
   );
 };

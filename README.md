@@ -74,18 +74,5 @@ interface BlogPost {
   author: string;
   readTime: number;
 }
-```
-
-## 🎯 Próximas Mejoras
-
-- [ ] Sistema de comentarios
-- [ ] Modo oscuro
-- [ ] Más tipos de animaciones
-- [ ] Sistema de tags
-- [ ] Búsqueda avanzada
-
----
 
 **© 2025 Gonza Mangini. Todos los derechos reservados.**
-
-Construido con ❤️ y mucha determinación 💪

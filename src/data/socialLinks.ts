@@ -4,16 +4,16 @@ export const socialLinks: SocialLink[] = [
   {
     name: "Instagram",
     url: "https://instagram.com/gonzamangini",
-    icon: "📷"
+    icon: "instagram"
   },
   {
     name: "GitHub",
     url: "https://github.com/gonzamangini",
-    icon: "💻"
+    icon: "github"
   },
   {
     name: "LinkedIn",
     url: "https://linkedin.com/in/gonzamangini",
-    icon: "💼"
+    icon: "linkedin"
   }
 ];

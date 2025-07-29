@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { socialLinks } from '../data/socialLinks';
+import SocialIcon from './SocialIcon';
 
 const Footer: React.FC = () => {
   return (
@@ -28,7 +29,7 @@ const Footer: React.FC = () => {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="flex items-center space-x-2 bg-gray-800 hover:bg-gray-700 px-4 py-2 rounded-lg transition-colors duration-200"
               >
-                <span className="text-xl">{social.icon}</span>
+                <SocialIcon type={social.icon} className="w-5 h-5" />
                 <span className="font-medium">{social.name}</span>
               </motion.a>
             ))}
@@ -52,25 +53,8 @@ const Footer: React.FC = () => {
             className="text-center space-y-2"
           >
             <p className="text-gray-300">
-              © 2025 Gonza Mangini. Todos los derechos reservados.
+              © 2025 Gonzalo Mangini.
             </p>
-            <p className="text-sm text-gray-400">
-              Construido con ❤️ y mucha determinación
-            </p>
-          </motion.div>
-
-          {/* Motivational Quote */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-            viewport={{ once: true }}
-            className="text-center max-w-2xl"
-          >
-            <blockquote className="text-lg italic text-gray-300">
-              "El éxito no es definitivo, el fracaso no es fatal: lo que cuenta es el coraje para continuar."
-            </blockquote>
-            <cite className="text-sm text-gray-400 mt-2 block">- Winston Churchill</cite>
           </motion.div>
         </div>
       </div>

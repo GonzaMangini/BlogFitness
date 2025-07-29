@@ -3,6 +3,7 @@ export interface BlogPost {
   title: string;
   description: string;
   date: string;
+  category: 'rutinas' | 'nutrición' | 'motivación' | 'progreso';
   animationType: 'fade-in' | 'slide-up' | 'scale-in';
   content?: string;
   author: string;
