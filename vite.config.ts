@@ -9,9 +9,21 @@ export default defineConfig({
     host: true
   },
   build: {
-    outDir: 'build'
+    outDir: 'build',
+    rollupOptions: {
+      external: [],
+      output: {
+        manualChunks: undefined
+      }
+    }
   },
   optimizeDeps: {
-    exclude: ['lucide-react']
+    exclude: ['lucide-react'],
+    include: ['react-router']
+  },
+  resolve: {
+    alias: {
+      '@': '/src'
+    }
   }
 })
