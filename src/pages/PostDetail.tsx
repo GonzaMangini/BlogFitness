@@ -1,5 +1,5 @@
 import React from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router';
 import { motion } from 'framer-motion';
 import { blogPosts } from '../data/blogPosts';
 
